@@ -22,7 +22,7 @@ function Footer(){
                 </div>
                 <div>
                     <h3>Contato</h3>
-                    <p>Email: contato@lovetecno.com</p>
+                    <p>Email: ronaldoreemias@gmail.com</p>
                     <p>Telefone: (82) 98887-3225</p>
                     <p>Endereço: Rua Projetada, 123 - Maceió, AL</p>
                 </div>
