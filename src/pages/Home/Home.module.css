@@ -206,18 +206,13 @@ body{
 
     .containercentro div.headercentro {
   grid-area: header;
-  overflow-y: scroll;
+
   gap: 40px;
-  max-height: 400px;
-  scrollbar-width: none; /* Firefox */
-  -ms-overflow-style: none;
+
 }
 .containercentro div.menucentro {
   grid-area: menu;
-  overflow-y: scroll;
-  max-height: 400px;
-  scrollbar-width: none;
-  -ms-overflow-style: none;
+
 }
 
 }
