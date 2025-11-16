@@ -30,9 +30,9 @@ class NameForm extends React.Component {
         </div>
         <p>Receba as últimas novidades do mundo tech diretamente no seu email</p>
         <label>
-          <input type="text" className={style.inputtexto} placeholder="digite seu melhor Email..." value={this.state.value} onChange={this.handleChange} />
+          <input type="text" className={style.inputtexto} placeholder="digite seu melhor email..." value={this.state.value} onChange={this.handleChange} />
         </label>
-        <input type="submit" className={style.botaoenviar} value="inscrever-se" />
+        <input type="submit" className={style.botaoenviar} value="enviar" />
       </form>
     );
   }
@@ -121,13 +121,13 @@ function Home() {
                             <h3>Sobre o Site</h3>
                             <div className={style.linha}></div>
                             <br/>
-                            <p>O blog Love Tecno traz as últimas novidades, 
-                                análises e dicas sobre tecnologia,
-                                com foco em produtos eletrônicos e tendências do mercado.
+                            <p>O blog foi construido para mostrar novidades do mundo tec, mostrar oportunidades de emprego na área,
+                              entregar um hambiente de comunicação e evolução. Também tem a aba de oja, lá os produtos são confiaveis
+                                e com direcionamento para plataformas validadas e reais.
 
-                                Nossa missão é ajudar você a 
+                                Minha missão é ajudar você a 
                                 fazer as melhores escolhas 
-                                tecnológicas.</p>
+                                tecnológicas e profissinal.</p>
                         </div>
                         <br/>
                         <NameForm />
