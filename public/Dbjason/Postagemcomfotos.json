@@ -1,0 +1,42 @@
+
+        [{
+            "id": 1,
+            "titulo": "Novo Smartphone com Tela Dobrável",
+            "data": "20 de Março, 2024",
+            "resumo": "O mais recente lançamento da marca promete revolucionar o mercado com sua tela flexível e câmera de alta resolução.",
+            "imagem": "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=880&q=80",
+            "link": "https://www.techtudo.com.br/listas/2025/01/celular-dobravel-4-modelos-ideais-para-quem-quer-comprar-um-em-2025-edmobile.ghtml"
+        },
+        {
+            "id": 2,
+            "titulo": "Laptop Gamer com RTX 4090",
+            "data": "18 de Março, 2024",
+            "resumo": "Conheça o laptop mais poderoso do mercado, capaz de rodar os jogos mais pesados com gráficos no máximo.",
+            "imagem": "https://images.unsplash.com/photo-1603302576837-37561b2e2302?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=868&q=80",
+            "link": "https://farmapets.com.br/listas/guia-de-compra-6-melhores-notebook-rtx-4090-com-excelente-avaliacao/"
+        },
+        {
+            "id": 3,
+            "titulo": "Smartwatch com Monitoramento de Saúde",
+            "data": "16 de Março, 2024",
+            "resumo": "O novo relógio inteligente acompanha batimentos cardíacos, oxigenação do sangue e padrões de sono com precisão médica.",
+            "imagem": "https://images.unsplash.com/photo-1544117519-31a4b719223d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=774&q=80",
+            "link": "https://olhardigital.com.br/2025/06/19/reviews/monitore-sua-saude-com-os-melhores-smartwatches-de-2025/"
+        },
+        {
+            "id": 4,
+            "titulo": "Fones de Ouvido com Cancelamento de Ruído",
+            "data": "14 de Março, 2024",
+            "resumo": "Experimente a imersão sonora completa com os novos fones que eliminam 99% do ruído externo.",
+            "imagem": "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80",
+            "link": "https://olhardigital.com.br/2025/07/14/reviews/9-fones-de-ouvido-com-cancelamento-de-ruido-por-menos-de-r-300/"
+        },
+        {
+            "id": 5,
+            "titulo": "Câmera Mirrorless Profissional",
+            "data": "11 de Março, 2024",
+            "resumo": "Capture momentos com qualidade profissional com a nova câmera mirrorless de 45MP e estabilização 5 eixos.",
+            "imagem": "https://images.unsplash.com/photo-1516035069371-29a1b244cc32?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=898&q=80",
+            "link": "https://www.guiadosperifericos.com.br/melhores-cameras-mirrorless/"
+        }
+]    

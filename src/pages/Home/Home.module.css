@@ -1,0 +1,265 @@
+*{
+    margin: 0;
+}
+
+body{
+    background-color: rgba(233, 235, 238, 0.986);
+}
+
+.mainHome{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.banner{
+    width: 100%;
+    height: 330px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(rgb(13, 230, 238), #1185ce, #0c56aa);
+    color: white;
+}
+
+.banner h1{
+    font-size: 3.50rem;
+}
+
+.postagens{
+    width: 85%;
+}
+
+.containercentro {
+  display: grid;
+  grid-template-areas:
+    "header content"
+    "menu content";
+  grid-template-columns: 3fr 1.5fr;
+  gap: 10px;
+  padding: 5px;
+}
+
+.containercentro div h3{
+    margin: 5px;
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+.containercentro div.headercentro {
+  grid-area: header;
+  overflow-y: scroll;
+  gap: 40px;
+  max-height: 250px;
+}
+.containercentro div.menucentro {
+  grid-area: menu;
+  overflow-y: scroll;
+  max-height: 700px;
+}
+.containercentro div.contentcentro {
+  grid-area: content;
+  padding: 20px;
+}
+
+.containercentro div.contentcentro .sobre{
+    padding: 15px;
+    border-radius: 10px;
+    background-color: #ffffff;
+    box-shadow: 0 1px 3px  rgba(0, 0, 0, 0.507)
+}
+
+/* Estilização para postagens sem foto */
+.postagemSemFoto {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;        /* espaçamento automático entre postagens */
+    margin: 20px;     /* margem externa */
+}
+
+.postagemSemFoto {
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.postagemSemFoto:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+.postagemSemFoto h3 {
+    color: #0c56aa;
+    margin-bottom: 10px;
+    font-size: 1.4rem;
+}
+
+.postagemSemFoto .data {
+    color: #666;
+    font-size: 0.9rem;
+    margin-bottom: 10px;
+}
+
+.postagemSemFoto .resumo {
+    color: #333;
+    line-height: 1.6;
+}
+
+/* Estilização para postagens com foto */
+.postagemComFoto {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;        /* espaçamento automático entre postagens */
+    margin-top: 20px;
+}
+
+.postagemComFoto {
+    background-color: #ffffff;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.postagemComFoto:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+.postagemComFoto img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.postagemComFoto .conteudo {
+    padding: 15px;
+}
+
+.postagemComFoto h3 {
+    color: #0c56aa;
+    margin-bottom: 10px;
+    font-size: 1.3rem;
+}
+
+.postagemComFoto .data {
+    color: #666;
+    font-size: 0.9rem;
+    margin-bottom: 10px;
+}
+
+.postagemComFoto .resumo {
+    color: #333;
+    line-height: 1.6;
+    margin-bottom: 15px;
+}
+
+.lerMais {
+    color: #1185ce;
+    text-decoration: none;
+    font-weight: bold;
+    display: inline-block;
+    transition: color 0.3s ease;
+}
+
+.lerMais:hover {
+    color: #0c56aa;
+}
+
+
+.linha {
+  height: 3px;
+  width: 100%;
+  background-color: #1185ce;
+  margin: 0 auto;
+  animation: brilho 2s infinite;
+}
+
+@keyframes brilho {
+  0% { opacity: 0.3; }
+  50% { opacity: 1; }
+  100% { opacity: 0.3; }
+}
+
+@media (max-width: 768px) {
+    .banner h1{
+        font-size: 2rem;
+    }
+
+    .banner p{
+        font-size: 0.70rem;
+    }
+
+    .containercentro {
+        display: grid;
+        grid-template-areas:
+            "header "
+            "menu "
+            "content";
+        grid-template-columns: 1fr;
+        gap: 10px;
+        
+        padding: 5px;
+    }
+
+    .postagens{
+        width: 98%;
+    }
+
+    .postagemComFoto img {
+        height: 150px;
+    }
+
+    .containercentro div.headercentro {
+  grid-area: header;
+  overflow-y: scroll;
+  gap: 40px;
+  max-height: 400px;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none;
+}
+.containercentro div.menucentro {
+  grid-area: menu;
+  overflow-y: scroll;
+  max-height: 400px;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+}
+
+.form{
+    display: flex;
+    max-width: 100%;
+    gap: 10px;
+    padding: 20px;
+    border-radius: 10px;
+    flex-direction: column;
+    background-color: #ffffff;
+    box-shadow: 0 1px 3px  rgba(0, 0, 0, 0.507)
+}
+
+.form div h2{
+    font-family:  'Lucida Sans Unicode';
+}
+
+.form input{
+    padding: 15px;
+    width: 100%;
+    border-radius: 20px;
+}
+
+.botaoenviar{
+    background-color: rgba(0, 47, 255, 0.801);
+    border:none;
+    color: white;
+    cursor: pointer;
+    font-size: 1rem;
+}
+
+.botaoenviar:hover{
+    background-color: rgb(2, 35, 182);
+}
+
+.inputtexto{
+    margin-top: 15px;
+    border: solid 1px rgba(0, 0, 0, 0.623);
+}
