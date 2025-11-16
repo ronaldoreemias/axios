@@ -48,14 +48,10 @@ body{
 
 .containercentro div.headercentro {
   grid-area: header;
-  overflow-y: scroll;
-  gap: 40px;
-  max-height: 250px;
 }
 .containercentro div.menucentro {
   grid-area: menu;
-  overflow-y: scroll;
-  max-height: 700px;
+
 }
 .containercentro div.contentcentro {
   grid-area: content;
