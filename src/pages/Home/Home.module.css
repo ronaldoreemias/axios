@@ -173,11 +173,12 @@ body{
         background: linear-gradient(rgb(13, 230, 238), #3c96ce, #175092);
     }
     .banner h1{
-        display: none;
+        font-size: 2.0rem;
+        font-weight: 370;
     }
 
     .banner p{
-        font-size: 1rem;
+        display: none;
     }
 
     .containercentro {
