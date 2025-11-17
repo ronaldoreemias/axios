@@ -1,25 +1,42 @@
 import style from "./Vagas.module.css";
 import Navbar from "../../Components/Navbar";
 import Footer from "../../Components/Footer";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react"; // Adicione useCallback
 
 function Vagas() {
+    const [vagas, setVagas] = useState([]);
+    const [vagasFiltradas, setVagasFiltradas] = useState([]);
+
+    useEffect(() => {
+        fetch('/Dbjason/Vagas.json')
+        .then((response) => response.json())
+        .then((dados) => {
+            setVagas(dados);
+            setVagasFiltradas(dados);
+        })
+        .catch((error) => {
+            console.error("Erro ao carregar vagas:", error);
+        });
+    }, []);
+
     const [filtros, setFiltros] = useState({
         tipoContrato: {
             Freelancer: false,
             PJ: false,
-            CLT: true,
+            CLT: false,
             estagio: false
         },
         areaAtuacao: {
             "Front-end": false,
             "Back-end": false,
-            Fullstack: true,
-            "Banco de dados": false,
-            "Suporte de T.I": false,
-            HELP: false,
-            "Tecnico de informatica": false,
-            "Ciber Securite": false
+            "Fullstack": false,
+            "Banco de Dados": false,
+            "Suporte e Dados": false,
+            "Automação e BI": false
+        },
+        modelo: {
+            "Presencial": false,
+            "Home office": false
         }
     });
 
@@ -47,23 +64,95 @@ function Vagas() {
         }));
     };
 
+    // Função para aplicar filtros - agora com useCallback
+    const aplicarFiltros = useCallback(() => {
+        let vagasFiltradas = vagas;
+
+        // Filtro por termo de busca
+        if (termoBusca) {
+            vagasFiltradas = vagasFiltradas.filter(vaga => 
+                vaga.Vaga.toLowerCase().includes(termoBusca.toLowerCase()) ||
+                vaga.Descrição.toLowerCase().includes(termoBusca.toLowerCase()) ||
+                vaga.Local.toLowerCase().includes(termoBusca.toLowerCase()) ||
+                vaga.areaAtuacao.toLowerCase().includes(termoBusca.toLowerCase())
+            );
+        }
+
+        // Filtro por tipo de contrato
+        const tiposContratoSelecionados = Object.keys(filtros.tipoContrato).filter(
+            key => filtros.tipoContrato[key]
+        );
+        
+        if (tiposContratoSelecionados.length > 0) {
+            vagasFiltradas = vagasFiltradas.filter(vaga => 
+                tiposContratoSelecionados.includes(vaga.tipoContrato)
+            );
+        }
+
+        // Filtro por área de atuação
+        const areasSelecionadas = Object.keys(filtros.areaAtuacao).filter(
+            key => filtros.areaAtuacao[key]
+        );
+        
+        if (areasSelecionadas.length > 0) {
+            vagasFiltradas = vagasFiltradas.filter(vaga => 
+                areasSelecionadas.includes(vaga.areaAtuacao)
+            );
+        }
+
+        // Filtro por modelo de trabalho
+        const modelosSelecionados = Object.keys(filtros.modelo).filter(
+            key => filtros.modelo[key]
+        );
+        
+        if (modelosSelecionados.length > 0) {
+            vagasFiltradas = vagasFiltradas.filter(vaga => 
+                modelosSelecionados.includes(vaga.modelo)
+            );
+        }
+
+        setVagasFiltradas(vagasFiltradas);
+    }, [vagas, termoBusca, filtros]); // Adicione todas as dependências
+
+    // Aplicar filtros automaticamente quando os filtros mudam
+    useEffect(() => {
+        aplicarFiltros();
+    }, [aplicarFiltros]); // Agora está correto
+
     const handleSubmitFiltros = (e) => {
         e.preventDefault();
-        
-        const dadosFiltros = {
-            tiposContrato: Object.keys(filtros.tipoContrato).filter(key => filtros.tipoContrato[key]),
-            areasAtuacao: Object.keys(filtros.areaAtuacao).filter(key => filtros.areaAtuacao[key]),
-            termoBusca: termoBusca
-        };
-
-        console.log("Dados para enviar ao backend:", dadosFiltros);
-        // Aqui você faria a chamada para o backend
-        // Exemplo: api.buscarVagas(dadosFiltros)
+        aplicarFiltros();
     };
 
     const handleBuscaSubmit = (e) => {
         e.preventDefault();
-        handleSubmitFiltros(e);
+        aplicarFiltros();
+    };
+
+    // Função para limpar filtros
+    const limparFiltros = () => {
+        setTermoBusca("");
+        setFiltros({
+            tipoContrato: {
+                Freelancer: false,
+                PJ: false,
+                CLT: false,
+                estagio: false
+            },
+            areaAtuacao: {
+                "Front-end": false,
+                "Back-end": false,
+                "Fullstack": false,
+                "Banco de Dados": false,
+                "Suporte e Dados": false,
+                "Automação e BI": false
+            },
+            modelo: {
+                "Presencial": false,
+                "Home office": false
+            }
+        });
+        setVagasFiltradas(vagas);
     };
 
     return(
@@ -101,9 +190,25 @@ function Vagas() {
                                     <label htmlFor={`area-${area}`}>{area}</label>
                                 </div>
                             ))}
+
+                            <h3>Modelo de Trabalho</h3>
+                            {Object.keys(filtros.modelo).map(modelo => (
+                                <div key={modelo} className={style.checkboxGroup}>
+                                    <input 
+                                        type="checkbox" 
+                                        id={`modelo-${modelo}`}
+                                        checked={filtros.modelo[modelo]}
+                                        onChange={() => handleFiltroChange('modelo', modelo)}
+                                    />
+                                    <label htmlFor={`modelo-${modelo}`}>{modelo}</label>
+                                </div>
+                            ))}
                             
                             <button type="submit" className={style.botaoFiltrar}>
-                                Filtrar
+                                Aplicar Filtros
+                            </button>
+                            <button type="button" className={style.botaoLimpar} onClick={limparFiltros}>
+                                Limpar Filtros
                             </button>
                         </form>
                     </div>
@@ -114,7 +219,7 @@ function Vagas() {
                         <form onSubmit={handleBuscaSubmit}>
                             <input 
                                 type="text" 
-                                placeholder="Digite a vaga que procura"
+                                placeholder="Digite a vaga que procura (cargo, localidade, tecnologia...)"
                                 value={termoBusca}
                                 onChange={(e) => setTermoBusca(e.target.value)}
                             />
@@ -122,9 +227,66 @@ function Vagas() {
                         </form>
                     </div>
 
+                    <div className={style.infoResultados}>
+                        <span>{vagasFiltradas.length} vaga(s) encontrada(s)</span>
+                    </div>
+
                     <div className={style.ondevaificarasvagas}>
-                        {/* Área onde as vagas serão listadas */}
-                        
+                        {vagasFiltradas.length === 0 ? (
+                            <div className={style.semResultados}>
+                                <h3>Nenhuma vaga encontrada</h3>
+                                <p>Tente ajustar os filtros ou os termos da busca.</p>
+                            </div>
+                        ) : (
+                            <div className={style.listaVagas}>
+                                {vagasFiltradas.map((vaga, index) => (
+                                    <div key={index} className={style.cardVaga}>
+                                        <div className={style.cabecalhoVaga}>
+                                            <h3 className={style.tituloVaga}>{vaga.Vaga}</h3>
+                                            <span className={style.faixaSalarial}>{vaga.faixaSalarial}</span>
+                                        </div>
+                                        
+                                        <p className={style.descricaoVaga}>{vaga.Descrição}</p>
+                                        
+                                        <div className={style.tagsVaga}>
+                                            <span className={style.tag}>{vaga.areaAtuacao}</span>
+                                            <span className={style.tag}>{vaga.tipoContrato}</span>
+                                            <span className={style.tag}>{vaga.modelo}</span>
+                                        </div>
+                                        
+                                        <div className={style.infoVaga}>
+                                            <span className={style.localVaga}>
+                                                📍 {vaga.Local}
+                                            </span>
+                                        </div>
+
+                                        {vaga.beneficios && vaga.beneficios.length > 0 && (
+                                            <div className={style.beneficios}>
+                                                <strong>Benefícios:</strong>
+                                                <div className={style.listaBeneficios}>
+                                                    {vaga.beneficios.map((beneficio, idx) => (
+                                                        <span key={idx} className={style.beneficio}>
+                                                            {beneficio}
+                                                        </span>
+                                                    ))}
+                                                </div>
+                                            </div>
+                                        )}
+                                        
+                                        {vaga.Link_linkdin && (
+                                            <a 
+                                                href={vaga.Link_linkdin} 
+                                                target="_blank" 
+                                                rel="noopener noreferrer"
+                                                className={style.botaoCandidatar}
+                                            >
+                                                📝 Candidatar-se no LinkedIn
+                                            </a>
+                                        )}
+                                    </div>
+                                ))}
+                            </div>
+                        )}
                     </div>
                 </div>
             </main>
