@@ -30,7 +30,7 @@ function Footer(){
             </div>
             <br/>
             <div className={style.areatextofooter}>
-                <p>© 2024 Love Tecno. Todos os direitos reservados.</p>
+                <p>© 2025 Axios_fetch. Todos os direitos reservados.</p>
             </div>
             <br/>
         </footer>

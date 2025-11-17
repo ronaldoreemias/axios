@@ -121,8 +121,8 @@ function Loja() {
           )}
         </div>
       </main>
-      <Footer />
     </>
+    
   );
 }
 

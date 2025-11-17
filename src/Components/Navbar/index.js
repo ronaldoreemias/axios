@@ -25,8 +25,12 @@ function Navbar(){
                 <nav className={style.nav}>
                     {/* Menu para desktop */}
                     <ul className={`${style.navList} ${isMenuOpen ? style.navListActive : ''}`}>
+                        
                         <li>
                             <a href="/" className={style.active} onClick={closeMenu}>Home</a>
+                        </li>
+                        <li>
+                            <a href="/Notficacao" className={style.active} onClick={closeMenu}>Sistema</a>
                         </li>
                         <li>
                             <a href="/Loja" onClick={closeMenu}>Loja</a>
