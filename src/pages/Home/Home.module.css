@@ -170,7 +170,7 @@ body{
 
     .banner {
         width: 100%;
-        background: linear-gradient(rgb(13, 230, 238), #3c96ce, #175092);
+        background: linear-gradient(rgb(255, 255, 255), #eaebeca9, #4545467a);
     }
     .banner h1{
         font-size: 2.0rem;
